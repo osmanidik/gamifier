@@ -1,0 +1,20 @@
+{
+  "name": "gamifier",
+  "version": "0.0.1",
+  "description": "Generates games with no javascript. Currently only tic-tac-toe",
+  "bin": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gamify",
+    "gamifier",
+    "html",
+    "css",
+    "game",
+    "tic-tac-toe"
+  ],
+  "author": "osmanidik",
+  "license": "ISC",
+  "type": "module"
+}
