@@ -64,12 +64,12 @@ class XO {
 			(b[1] !== "." && b[1] === b[4] && b[1] === b[7]) ||
 			(b[2] !== "." && b[2] === b[5] && b[2] === b[8]) ||
 			(b[0] !== "." && b[0] === b[4] && b[0] === b[8]) ||
-			(b[3] !== "." && b[2] === b[4] && b[2] === b[5])
+			(b[2] !== "." && b[2] === b[4] && b[2] === b[6])
 		);
 	}
 }
 
-const PLAYERS = ['RedRedRedRedRedRedRedRedRed', 'Blue'];
+let players = ['Red', 'Blue'];
 
 function tmpl(board) {
 	return `<head><title>Tic Tac Toe</title><link rel="stylesheet" href="main.css"></head><body>${hdr(board.board)}${brd(board)}</body>`;
@@ -78,7 +78,7 @@ function tmpl(board) {
 function hdr(board) {
 	let victory = XO.victory(board),
 		draw = XO.draw(board),
-		player = PLAYERS[(XO.turn(board) + (victory ? 1 : 0)) % 2],
+		player = players[(XO.turn(board) + (victory ? 1 : 0)) % 2],
 		m = XO.move(board),
 		h = `<div>&nbsp${victory ? (draw ? "It's a draw!" : `<s ${m}>${player}</s>&nbspwon!`) + again() : `<s ${m}>${player}</s>'s turn&nbsp`}</div>`;
 
@@ -134,7 +134,14 @@ function tic_tac_toe() {
 	console.log('Tic-Tac-Toe game generated. Open the tic-tac-toe to play!');
 }
 
-if (process.argv.slice(2)[0] === 'tic-tac-toe')
+if (process.argv.slice(2)[0] === 'tic-tac-toe') {
+	process.argv.slice(3).forEach((arg) => {
+		if (arg.startsWith('p1='))
+			players[0] = arg.slice(3);
+		if (arg.startsWith('p2='))
+			players[1] = arg.slice(3);
+	});
 	tic_tac_toe();
+}
 else
 	console.log('Usage: npx gamifier <game>');
