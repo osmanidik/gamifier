@@ -1,6 +1,6 @@
 {
   "name": "gamifier",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generates games with no javascript. Currently only tic-tac-toe",
   "bin": "bin/index.js",
   "scripts": {
